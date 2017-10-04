@@ -2,25 +2,18 @@
 # same position in 2 different DNA strands
 
 class Hamming
-	def self.compute(original_strand, copy_strand) 
-		change = 0
-		strand_length = original_strand.length 
-		if original_strand.length != copy_strand.length
-			raise ArgumentError
-		end
-		for i in 0..(strand_length - 1)			
-			if original_strand[i] != copy_strand[i]
-				change += 1
-			end
-		end	
-
-				
-		change
+  def self.compute(original_strand, copy_strand) 
+    change = 0  #Change == Hamming Distance
+	raise ArgumentError if original_strand.length != copy_strand.length
+	original_strand.chars.each_index  do |position| 
+	  change += 1 if original_strand[position] != copy_strand[position]
+	  end
+	  change
 	end
 end
 
 module BookKeeping
-	VERSION = 3
+  VERSION = 3
 end
 
 
